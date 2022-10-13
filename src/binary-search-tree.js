@@ -7,21 +7,27 @@ const { Node } = require('../extensions/list-tree.js');
 * using Node from extensions
 */
 class BinarySearchTree {
+ 
+ 
   constructor() {
+   
 
-    this.root = null;
+    this.roots=null;
   }
 
   root() {
-    return this.root;
+    
+    return this.roots;
   }
 
   add(data) {
     let newNode = new Node(data);
-    if (this.root === null) {
-      this.root = newNode;
+    if (this.roots === null) {
+      this.roots = newNode;
     } else {
-      this.insertNode(this.root, newNode);
+
+
+      this.insertNode(this.roots, newNode);
     }
   }
   insertNode(node, newNode) {
@@ -51,7 +57,7 @@ return true;
 
 
   find(data) {
-    return search(this.root, data);
+    return search(this.roots, data);
     function search(node, data) {
       if (node === null) {
         return null;
@@ -68,7 +74,7 @@ return true;
 
 
   remove(data) {
-    this.root = removeNode(this.root, data);
+    this.roots = removeNode(this.roots, data);
     function removeNode(node, data) {
       if (node === null) {
         return null;
@@ -114,7 +120,7 @@ return true;
 
   min() {
 
-    return minNode(this.root).data;
+    return minNode(this.roots).data;
     function minNode(node) {
 
       if (node.left === null)
@@ -126,7 +132,7 @@ return true;
   }
   max() {
 
-    return maxNode(this.root).data;
+    return maxNode(this.roots).data;
     function maxNode(node) {
 
       if (node.right === null)
