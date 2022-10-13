@@ -21,7 +21,7 @@ class BinarySearchTree {
     if (this.root === null) {
       this.root = newNode;
     } else {
-      this.insertNode(this.root, newNode); 
+      this.insertNode(this.root, newNode);
     }
   }
   insertNode(node, newNode) {
@@ -40,10 +40,15 @@ class BinarySearchTree {
     }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+  has(data) {
+    if(this.find(data)===null)
+return false;
+else
+return true;
+
   }
+
 
   find(data) {
     return search(this.root, data);
@@ -67,22 +72,22 @@ class BinarySearchTree {
     function removeNode(node, data) {
       if (node === null) {
         return null;
-  
+
       } else if (data < node.data) {
         node.left = removeNode(node.left, data);
         return node;
-  
+
       } else if (data > node.data) {
         node.right = removeNode(node.right, data);
         return node;
-  
+
       } else {
-  
+
         if (node.left === null && node.right === null) {
           node = null;
           return node;
         }
-  
+
         if (node.left === null) {
           node = node.right;
           return node;
@@ -90,7 +95,7 @@ class BinarySearchTree {
           node = node.left;
           return node;
         }
-  
+
         let newNode = minNode(node.right);
         node.data = newNode.data;
         node.right = removeNode(node.right, newNode.data);
@@ -99,37 +104,37 @@ class BinarySearchTree {
 
           if (node.left === null)
             return node;
-          else 
+          else
             return minNode(node.left);
         }
       }
     }
   }
-  
+
 
   min() {
-    
+
     return minNode(this.root).data;
     function minNode(node) {
 
       if (node.left === null)
         return node;
-      else 
+      else
         return minNode(node.left);
     }
-  
+
   }
   max() {
-    
+
     return maxNode(this.root).data;
     function maxNode(node) {
 
       if (node.right === null)
         return node;
-      else 
+      else
         return maxNode(node.right);
     }
-  
+
   }
 
 }
